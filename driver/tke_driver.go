@@ -669,7 +669,10 @@ func getWrapDescribeClusterRequest(state *state) (*tke.DescribeClustersRequest, 
 	logrus.Info("invoking describeCluster")
 	request := tke.NewDescribeClustersRequest()
 	request.Limit = tccommon.Int64Ptr(int64(20))
-	request.ClusterIds[0] = &state.ClusterID
+	fmt.Println("jiandao - 1 " + state.ClusterID)
+	request.ClusterIds = []*string{
+		tccommon.StringPtr(state.ClusterID),
+	}
 	return request, nil
 }
 
